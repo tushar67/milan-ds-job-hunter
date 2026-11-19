@@ -37,6 +37,6 @@ jobs:
         run: |
           git config --global user.name "Job Hunter Bot"
           git config --global user.email "bot@users.noreply.github.com"
-          git add jobs.csv seen_jobs.json outreach_drafts.md outreach_log.json
+          for f in jobs.csv seen_jobs.json outreach_drafts.md outreach_log.json; do [ -f "$f" ] && git add "$f"; done
           git diff --quiet && git diff --staged --quiet || git commit -m "Daily Milan DS job matches & outreach log"
           git push
